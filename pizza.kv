@@ -1,0 +1,125 @@
+#:import utils kivy.utils
+#:set couleur1 "#dd7835"
+#:set couleur2 "#c8c8c8"
+#:import signin signin
+#:import signup signup
+Main:
+#Signup:
+#Signin:
+
+<CoverImage@CoverBehavior+Image>:
+    reference_size:self.texture_size
+    canvas:
+        Color:
+            #rgb:utils.get_random_color()
+            rgba:0,0,0,.6
+        Rectangle:
+            pos:self.pos
+            size:self.size
+<Main>:
+    recycleview: recycleview
+    CoverImage:
+        source:"images/menu_background.jpg"
+        allow_stretch:True
+        keep_ratio:False
+    BoxLayout:
+        orientation:"vertical"
+        Image:
+            source:"images/small_logo.png"
+            size_hint:None,None
+            size:dp(150),dp(60)
+            allow_stretch:True
+            pos_hint:{ "center_x": .5}
+        Titlelab:
+            text:"Les pizzas"
+        BoxLayout:
+            padding:dp(20),dp(20)
+            RecycleView:
+                id:recycleview
+
+                viewclass: 'Pizzawidget' #nom de la classe a utiliser par la recycleview
+                RecycleBoxLayout:
+                    default_size:None,dp(56)
+                    default_size_hint:1,None
+                    size_hint_y:None
+                    height:self.minimum_height
+                    orientation:'vertical'
+                    spacing:dp(16)
+        Label:
+            text:root.erreur
+            size_hint:1,None
+            height:dp(30) if len(root.erreur)>0 else dp(0)
+            font_size:dp(12)
+            bold:True
+            canvas.before:
+                Color:
+                    rgb:1,0,0
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+
+<Leftalign@Label>:
+    text_size:self.size
+    halign:"left"
+    valign:"center"
+    canvas.before:
+        Color:
+            #rgb:utils.get_random_color()
+            rgba:0,0,0,0
+        Rectangle:
+            pos:self.pos
+            size:self.size
+<Fitlabel@Label>:
+    size_hint:None,None
+    size:self.texture_size
+
+<Badge@Fitlabel>:
+    color:0,0,0,1
+    bold:True
+    font_size:dp(10)
+    padding:dp(8),dp(3)
+    canvas.before:
+        Rectangle:
+            source:"images/badge.png"
+            pos:self.pos
+            size:self.size
+
+<Titlelab@Fitlabel>:
+    font_size:dp(22)
+    bold:True
+    padding:dp(16),dp(3)
+    canvas.before:
+        Color:
+            rgb:utils.get_color_from_hex(couleur1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+<Pizzawidget>:
+    BoxLayout:
+        size_hint_max_x:dp(300)
+        size_hint_min_x:dp(150)
+        orientation:'vertical'
+        BoxLayout:
+            spacing:dp(10)
+            Fitlabel:
+                text:root.nom
+                font_size:dp(22)
+                bold:True
+            Badge:
+                text:"VÉGÉTARIENNE" if root.vegetarienne else ""
+        Leftalign:
+            text:root.ingredient
+            color:utils.get_color_from_hex(couleur2)
+    Fitlabel:
+        text:str(root.prix)+"$"
+        font_size:dp(20)
+        color:utils.get_color_from_hex(couleur1)
+        pos_hint:{ "top":.9}
+
+
+
+
+
+
+

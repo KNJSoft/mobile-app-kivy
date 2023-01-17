@@ -1,0 +1,77 @@
+#connexion
+<Signin>:
+    Cover1Image:
+        source:"images/main_background.jpg"
+        allow_stretch:True
+        keep_ratio:False
+    BoxLayout:
+        spacing:dp(30)
+        orientation:"vertical"
+        Label:
+            text:""
+            bold:True
+            size_hint:None,None
+            size:self.texture_size
+            pos_hint:{ "center_x": .5}
+        Label:
+            text:""
+            bold:True
+            size_hint:None,None
+            size:self.texture_size
+            pos_hint:{ "center_x": .5}
+        Label:
+            text:""
+            bold:True
+            size_hint:None,None
+            size:self.texture_size
+            pos_hint:{ "center_x": .5}
+        Label:
+            text:"Connexion"
+            bold:True
+            size_hint:None,None
+            size:self.texture_size
+            pos_hint:{ "center_x": .5}
+        TextInput:
+            id:mon_texte1
+            size_hint:None,None
+            width:"350dp"
+            multiline:False
+            pos_hint:{ "center_x": .5}
+            height:dp(35)
+            hint_text:"Email or phone number"
+        TextInput:
+            id:mon_texte2
+            size_hint:None,None
+            width:"350dp"
+            height:dp(35)
+            hint_text:"Password"
+            multiline:False
+            pos_hint:{ "center_x": .5}
+            password:True
+            password_mask:"#"
+        Button:
+            text:"Connexion"
+            size_hint:None,None
+            width:"350dp"
+            pos_hint:{ "center_x": .5}
+            height:dp(40)
+            background_color:1,0,0,1
+        BoxLayout:
+            height:dp(50)
+            size_hint:None,None
+            width:"400dp"
+            pos_hint:{ "center_x": .5}
+            #canvas:
+             #   Color:
+              #      rgba:1,0,0,.9
+               # Rectangle:
+                #    pos:self.pos
+                 #   size:self.size
+            Label:
+                text:"Pas de compte?"
+            Button:
+                text:"S'inscrire"
+                color:1,0,0
+                background_color:1,0,0,0
+        Label:
+            text:""
