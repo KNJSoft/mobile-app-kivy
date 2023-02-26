@@ -4,7 +4,7 @@ from kivy.network.urlrequest import UrlRequest
 
 class Sign_in:
     def sign_in(self,on_complete,on_error,on_failure):
-        url="http://127.0.0.1:8000/sign_up/"
+        url="http://127.0.0.1:8000/sign_in/"
 
         def donnee_recu(req, result):
             data = json.dumps(result)
